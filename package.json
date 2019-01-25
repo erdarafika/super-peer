@@ -1,0 +1,19 @@
+{
+  "name": "unknown",
+  "version": "1.0.0",
+  "description": "Unknown project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Anwar Muhamat",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-rate-limit": "^3.3.2",
+    "gun": "^0.9.999998",
+    "helmet": "^3.15.0"
+  }
+}
