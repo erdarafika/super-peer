@@ -9,19 +9,27 @@ const app = express()
 app.use(helmet())
 app.use(Gun.serve)
 app.use(function(req, res, next) {
-    res.json({name: 'super-peer', version: '0.0.1'});
+    res.json({name: 'super-peer', liveNet: true, version: '0.0.1'});
 })
 
 const server = app.listen(3000)
 
 const sea = async (alias) => {
-    const result = gun.get(alias).get('sea')
-    return result
+    try {
+        const result = gun.get(alias).get('sea')
+        return result
+    } catch (error) {
+        
+    }
 }
 
 const verify_sig = async (data, pub) => {
-    const result = await SEA.verify(data, pub)
-    return result
+    try {
+        const result = await SEA.verify(data, pub)
+        return result
+    } catch (error) {
+        
+    }
 }
 
 Gun.on('opt', function(ctx){
@@ -30,14 +38,11 @@ Gun.on('opt', function(ctx){
         const to = this.to
         const put = data.put
         const get = data.get
-        // console.log(get)
-        // console.log(put)
         if (put) {
             const obj_key = Object.keys(put)[0]
             const obj_val = put[obj_key]
             const pub = Object.keys(obj_val)[1]
             const pub_val = obj_val[pub]
-            // console.log(obj_key)
             if (typeof(pub_val) == 'string') {
                 try {
                     const obj = JSON.parse(pub_val)    
@@ -57,7 +62,7 @@ Gun.on('opt', function(ctx){
                                 const exist_obj = JSON.parse(res)
                                 if (pub == 'sea') {
                                     if (obj.pub == exist_obj.pub) {
-                                        verify_sig(exist_obj.auth, exist_obj.pub).then( res_sig => { 
+                                        verify_sig(obj.auth, exist_obj.pub).then( res_sig => { 
                                             if (res_sig) {
                                                 to.next(data)
                                             }
