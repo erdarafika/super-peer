@@ -16,7 +16,7 @@ const server = app.listen(3000)
 
 const sea = async (alias) => {
     try {
-        const result = gun.get(alias).get('sea')
+        const result = await gun.get(alias).get('sea')
         return result
     } catch (error) {
         
