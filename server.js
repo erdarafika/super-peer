@@ -39,14 +39,32 @@ Gun.on('opt', function(ctx){
         const put = data.put
         const get = data.get
         if (put) {
-            const obj_key = Object.keys(put)[0]
-            const obj_val = put[obj_key]
-            const pub = Object.keys(obj_val)[1]
-            const pub_val = obj_val[pub]
-            if (typeof(pub_val) == 'string') {
+            const pub = Object.keys(put[Object.keys(put)[0]])[1]
+            const pub_val = put[Object.keys(put)[0]][pub]
+            const exSoul = pub.split('~')
+            const pubkey = exSoul[1]
+            if (pubkey) {
+                if (typeof(pub_val) == 'string') {
+                    try {
+                        const obj = JSON.parse(pub_val)
+                        verify_sig(obj.signed, pubkey).then( res => {
+                            try {
+                                if (res) {
+                                    to.next(data)
+                                }
+                            } catch (error) {
+                                
+                            }
+                        })
+                    } catch (error) {
+                        
+                    }        
+                }
+            }
+            if (!pubkey && typeof(pub_val) == 'string') {
                 try {
                     const obj = JSON.parse(pub_val)    
-                    sea(obj_key).then(res => {
+                    sea(Object.keys(put)[0]).then(res => {
                         if (res === undefined) {
                             if (pub == 'sea') {
                                 if (obj.auth && obj.pub) {
