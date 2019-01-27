@@ -43,10 +43,10 @@ Gun.on('opt', function(ctx){
             const pub_val = put[Object.keys(put)[0]][pub]
             const exSoul = pub.split('~')
             const pubkey = exSoul[1]
-            if (pubkey) {
-                if (typeof(pub_val) == 'string') {
-                    try {
-                        const obj = JSON.parse(pub_val)
+            if (pubkey && typeof(pub_val) == 'string') {
+                try {
+                    const obj = JSON.parse(pub_val)
+                    if (obj.signed) {
                         verify_sig(obj.signed, pubkey).then( res => {
                             try {
                                 if (res) {
@@ -56,9 +56,9 @@ Gun.on('opt', function(ctx){
                                 
                             }
                         })
-                    } catch (error) {
-                        
-                    }        
+                    }
+                } catch (error) {
+                    
                 }
             }
             if (!pubkey && typeof(pub_val) == 'string') {
@@ -80,11 +80,13 @@ Gun.on('opt', function(ctx){
                                 const exist_obj = JSON.parse(res)
                                 if (pub == 'sea') {
                                     if (obj.pub == exist_obj.pub) {
-                                        verify_sig(obj.auth, exist_obj.pub).then( res_sig => { 
-                                            if (res_sig) {
-                                                to.next(data)
-                                            }
-                                        })
+                                        if (obj.auth && exist_obj.pub) {
+                                            verify_sig(obj.auth, exist_obj.pub).then( res_sig => { 
+                                                if (res_sig) {
+                                                    to.next(data)
+                                                }
+                                            })
+                                        }
                                     }    
                                 } else {
                                     try {
