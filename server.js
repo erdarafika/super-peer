@@ -42,8 +42,11 @@ Gun.on('opt', function(ctx){
             const pub = Object.keys(put[Object.keys(put)[0]])[1]
             const pub_val = put[Object.keys(put)[0]][pub]
             const exSoul = pub.split('~')
+            const path = exSoul[0]
             const pubkey = exSoul[1]
-            if (pubkey && typeof(pub_val) == 'string') {
+            const spath = path.split('.')
+            const topic = spath[0]
+            if (pubkey && typeof(pub_val) == 'string' && topic == 'public') {
                 try {
                     const obj = JSON.parse(pub_val)
                     if (obj.signed) {
@@ -51,9 +54,9 @@ Gun.on('opt', function(ctx){
                             
                         } else {
                             verify_sig(obj.signed, pubkey).then( res => {
-                                console.log(res)
+                                const post = res.message
                                 try {
-                                    if (res !== undefined) {
+                                    if (res !== undefined && post.length <= 160) {
                                         to.next(data)
                                     }
                                 } catch (error) {
