@@ -47,15 +47,20 @@ Gun.on('opt', function(ctx){
                 try {
                     const obj = JSON.parse(pub_val)
                     if (obj.signed) {
-                        verify_sig(obj.signed, pubkey).then( res => {
-                            try {
-                                if (res) {
-                                    to.next(data)
+                        if (pubkey.length < 87) {
+                            
+                        } else {
+                            verify_sig(obj.signed, pubkey).then( res => {
+                                console.log(res)
+                                try {
+                                    if (res !== undefined) {
+                                        to.next(data)
+                                    }
+                                } catch (error) {
+                                    
                                 }
-                            } catch (error) {
-                                
-                            }
-                        })
+                            })
+                        }
                     }
                 } catch (error) {
                     
