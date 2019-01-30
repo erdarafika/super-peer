@@ -46,7 +46,7 @@ Gun.on('opt', function(ctx){
             const pubkey = exSoul[1]
             const spath = path.split('.')
             const topic = spath[0]
-            if (pubkey && typeof(pub_val) == 'string' && topic == 'public') {
+            if (pubkey && typeof(pub_val) == 'string') {
                 try {
                     const obj = JSON.parse(pub_val)
                     if (obj.signed) {
