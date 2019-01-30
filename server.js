@@ -56,7 +56,8 @@ Gun.on('opt', function(ctx){
                             verify_sig(obj.signed, pubkey).then( res => {
                                 const post = res.message
                                 try {
-                                    if (res !== undefined && post.length <= 160) {
+                                    const id = JSON.parse(pub_val)
+                                    if (res !== undefined && post.length <= 160 && id.hash) {
                                         to.next(data)
                                     }
                                 } catch (error) {
