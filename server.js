@@ -46,7 +46,9 @@ Gun.on('opt', function(ctx){
             const pubkey = exSoul[1]
             const spath = path.split('.')
             const topic = spath[0]
-            if (pubkey && typeof(pub_val) == 'string') {
+            const topics = ["sea", "public", "posts", "replies", "to"]
+            const filter = topics.includes(topic)
+            if (pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)
                     if (obj.signed) {
@@ -70,7 +72,7 @@ Gun.on('opt', function(ctx){
                     
                 }
             }
-            if (!pubkey && typeof(pub_val) == 'string') {
+            if (!pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)    
                     sea(Object.keys(put)[0]).then(res => {
