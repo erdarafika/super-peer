@@ -52,7 +52,7 @@ Gun.on('opt', function(ctx){
                 try {
                     const obj = JSON.parse(pub_val)
                     if (obj.signed) {
-                        if (pubkey.length < 87) {
+                        if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
                             verify_sig(obj.signed, pubkey).then( res => {
