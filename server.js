@@ -48,6 +48,9 @@ Gun.on('opt', function(ctx){
             const topic = spath[0]
             const topics = ["sea", "public", "posts", "replies", "to"]
             const filter = topics.includes(topic)
+            put.public['_']['>']['id'] = new Date().getTime()
+            put.id = 'id_'+new Date().getTime()
+            console.log(put)
             if (pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)
