@@ -82,8 +82,10 @@ Gun.on('opt', function(ctx){
                     sea(Object.keys(put)[0]).then(res => {
                         if (res === undefined) {
                             if (pub == 'sea') {
-                                if (obj.auth && obj.pub) {
-                                    verify_sig(obj.auth, obj.pub).then( res_sig => { 
+                                if (obj.epub && obj.pub && obj.ct && obj.iv && obj.s) {
+                                    const struct = {ct: obj.ct, iv: obj.iv, s: obj.s}
+                                    const auth = 'SEA{"m":{"ct":"'+obj.ct+'","iv":"'+obj.iv+'","s":"'+obj.s+'"},"s":"'+obj.sig+'"}'
+                                    verify_sig(auth, obj.pub).then( res_sig => { 
                                         if (res_sig) {
                                             to.next(data)
                                         }
@@ -95,8 +97,10 @@ Gun.on('opt', function(ctx){
                                 const exist_obj = JSON.parse(res)
                                 if (pub == 'sea') {
                                     if (obj.pub == exist_obj.pub) {
-                                        if (obj.auth && exist_obj.pub) {
-                                            verify_sig(obj.auth, exist_obj.pub).then( res_sig => { 
+                                        if (obj.epub && obj.pub && obj.ct && obj.iv && obj.s && exist_obj.pub) {
+                                            const struct = {ct: exist_obj.ct, iv: exist_obj.iv, s: exist_obj.s}
+                                            const auth = 'SEA{"m":{"ct":"'+exist_obj.ct+'","iv":"'+exist_obj.iv+'","s":"'+exist_obj.s+'"},"s":"'+exist_obj.sig+'"}'
+                                            verify_sig(auth, exist_obj.pub).then( res_sig => { 
                                                 if (res_sig) {
                                                     to.next(data)
                                                 }
