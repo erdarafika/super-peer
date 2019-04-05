@@ -3,7 +3,6 @@ require('gun/sea')
 const express = require('express')
 const helmet = require('helmet')
 const SEA = Gun.SEA
-const gun = Gun()
 const app = express()
 
 app.use(helmet())
@@ -64,7 +63,7 @@ Gun.on('opt', function(ctx){
                                 const post = res.message
                                 try {
                                     const id = JSON.parse(pub_val)
-                                    if (res !== undefined && post.length <= 160 && id.hash) {
+                                    if (res !== undefined && post.length <= 10000 && id.hash) {
                                         to.next(data)
                                     }
                                 } catch (error) {

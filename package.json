@@ -11,6 +11,7 @@
   "author": "Anwar Muhamat",
   "license": "ISC",
   "dependencies": {
+    "bullet-catcher": "^1.0.29",
     "express": "^4.16.4",
     "express-rate-limit": "^3.3.2",
     "gun": "^0.9.9999991",
