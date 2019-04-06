@@ -95,7 +95,8 @@ Gun.on('opt', function(ctx){
                             if (pub == 'sea') {
                                 if (obj.epub && obj.pub && obj.ct && obj.iv && obj.s) {
                                     const struct = {ct: obj.ct, iv: obj.iv, s: obj.s}
-                                    const auth = 'SEA{"m":{"ct":"'+obj.ct+'","iv":"'+obj.iv+'","s":"'+obj.s+'"},"s":"'+obj.sig+'"}'
+                                    // const auth = 'SEA{"m":{"ct":"'+obj.ct+'","iv":"'+obj.iv+'","s":"'+obj.s+'"},"s":"'+obj.sig+'"}'
+                                    const sig = "SEA"+JSON.stringify({m: {ct: obj.ct, iv: obj.iv, s: obj.s}, s: obj.sig})
                                     verify_sig(auth, obj.pub).then( res_sig => { 
                                         if (res_sig) {
                                             to.next(data)
@@ -110,7 +111,8 @@ Gun.on('opt', function(ctx){
                                     if (obj.pub == exist_obj.pub) {
                                         if (obj.epub && obj.pub && obj.ct && obj.iv && obj.s && exist_obj.pub) {
                                             const struct = {ct: exist_obj.ct, iv: exist_obj.iv, s: exist_obj.s}
-                                            const auth = 'SEA{"m":{"ct":"'+exist_obj.ct+'","iv":"'+exist_obj.iv+'","s":"'+exist_obj.s+'"},"s":"'+exist_obj.sig+'"}'
+                                            // const auth = 'SEA{"m":{"ct":"'+exist_obj.ct+'","iv":"'+exist_obj.iv+'","s":"'+exist_obj.s+'"},"s":"'+exist_obj.sig+'"}'
+                                            const sig = "SEA"+JSON.stringify({m: {ct: obj.ct, iv: obj.iv, s: obj.s}, s: obj.sig})
                                             verify_sig(auth, exist_obj.pub).then( res_sig => { 
                                                 if (res_sig) {
                                                     to.next(data)
