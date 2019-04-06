@@ -60,7 +60,7 @@ Gun.on('opt', function(ctx){
                                 const post = res.message
                                 try {
                                     const id = JSON.parse(pub_val)
-                                    if (res !== undefined && post.length <= 1000 && id.hash) {
+                                    if (res !== undefined && post.length <= 10000 && id.hash) {
                                         obj.idx = pub
                                         obj.type = topic
                                         axios({
@@ -83,7 +83,7 @@ Gun.on('opt', function(ctx){
                                                 // console.log(res.response.data);
                                             })
                                             .catch(function (err) {
-                                                console.log(err.response.data);
+                                                // console.log(err.response.data);
                                             });
                                         });
                                         to.next(data)
