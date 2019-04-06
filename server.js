@@ -122,20 +122,6 @@ Gun.on('opt', function(ctx){
                                             })
                                         }
                                     }    
-                                } else {
-                                    // try {
-                                    //     const obj = JSON.parse(pub_val)
-                                    //     console.log(obj)
-                                    //     if (obj.data) {
-                                    //         verify_sig(obj.data, exist_obj.pub).then( res_sig => { 
-                                    //             if (res_sig) {
-                                    //                 to.next(data)
-                                    //             }
-                                    //         })
-                                    //     }
-                                    // } catch(error) {
-                        
-                                    // } 
                                 }
                             } catch(error) {
                 
@@ -147,6 +133,7 @@ Gun.on('opt', function(ctx){
                 }        
             }
         } else if (get) {
+            console.log(data)
             to.next(data)
         }
         
