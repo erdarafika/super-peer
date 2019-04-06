@@ -69,11 +69,11 @@ Gun.on('opt', function(ctx){
                                             url: 'http://178.128.101.229:5984/media/'+obj.hash,
                                             data: obj
                                         })
-                                        .then(function (response) {
-                                            console.log(response);
+                                        .then(function (res) {
+                                            console.log(res.response);
                                         })
                                         .catch(function (error) {
-                                            console.log(error);
+                                            // console.log(error);
                                         });
                                         to.next(data)
                                     }
