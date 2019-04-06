@@ -65,9 +65,8 @@ Gun.on('opt', function(ctx){
                                 const post = res.message
                                 try {
                                     const id = JSON.parse(pub_val)
-                                    if (res !== undefined && post.length <= 10000 && id.hash) {
-                                        // index data on couchdb
-                                        obj.id = pub
+                                    if (res !== undefined && post.length <= 1000 && id.hash) {
+                                        obj.idx = pub
                                         axios({
                                             method: 'PUT',
                                             headers: { "Content-Type": "application/json" },
