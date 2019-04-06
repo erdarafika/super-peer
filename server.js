@@ -55,13 +55,11 @@ Gun.on('opt', function(ctx){
             if (pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)
-                    console.log(obj)
                     if (obj) {
                         if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
                             const sig = 'SEA{"m":{"message":"'+ obj.message +'"},"s":"'+ obj.sig +'"}'
-                            console.log(sig)
                             verify_sig(sig, pubkey).then( res => {
                                 const post = res.message
                                 try {
@@ -113,6 +111,7 @@ Gun.on('opt', function(ctx){
                                 } else {
                                     try {
                                         const obj = JSON.parse(pub_val)
+                                        console.log(obj)
                                         if (obj.data) {
                                             verify_sig(obj.data, exist_obj.pub).then( res_sig => { 
                                                 if (res_sig) {
