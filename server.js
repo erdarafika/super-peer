@@ -73,7 +73,7 @@ Gun.on('opt', function(ctx){
                                             // console.log(res.response);
                                         })
                                         .catch(function (err) {
-                                            console.log(err.response);
+                                            console.log(err.response.data);
                                         });
                                         to.next(data)
                                     }
