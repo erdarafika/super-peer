@@ -62,6 +62,7 @@ Gun.on('opt', function(ctx){
                                     const id = JSON.parse(pub_val)
                                     if (res !== undefined && post.length <= 1000 && id.hash) {
                                         obj.idx = pub
+                                        obj.type = topic
                                         axios({
                                             method: 'PUT',
                                             headers: { "Content-Type": "application/json" },
