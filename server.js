@@ -70,10 +70,10 @@ Gun.on('opt', function(ctx){
                                             data: obj
                                         })
                                         .then(function (response) {
-                                            // console.log(response);
+                                            console.log(response);
                                         })
                                         .catch(function (error) {
-                                            // console.log(error);
+                                            console.log(error);
                                         });
                                         to.next(data)
                                     }
