@@ -69,7 +69,7 @@ Gun.on('opt', function(ctx){
                                             url: 'http://178.128.101.229:5984/media/'+obj.hash
                                         })
                                         .then(function (res) {
-                                            // console.log(res.response.data);
+                                            console.log(res.response.data);
                                         })
                                         .catch(function (err) {
                                             console.log(err.response.data);
