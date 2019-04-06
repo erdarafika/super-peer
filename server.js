@@ -57,6 +57,7 @@ Gun.on('opt', function(ctx){
                         } else {
                             console.log(obj)
                             const sig = 'SEA{"m":{"message":"'+ obj.message +'"},"s":"'+ obj.sig +'"}'
+                            console.log(sig)
                             verify_sig(sig, pubkey).then( res => {
                                 const post = res.message
                                 try {
