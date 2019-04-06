@@ -64,16 +64,27 @@ Gun.on('opt', function(ctx){
                                         obj.idx = pub
                                         obj.type = topic
                                         axios({
-                                            method: 'PUT',
+                                            method: 'GET',
                                             headers: { "Content-Type": "application/json" },
-                                            url: 'http://178.128.101.229:5984/media/'+obj.hash,
-                                            data: obj
+                                            url: 'http://178.128.101.229:5984/media/'+obj.hash
                                         })
                                         .then(function (res) {
-                                            // console.log(res.response);
+                                            // console.log(res.response.data);
                                         })
                                         .catch(function (err) {
-                                            console.log(err.response.data);
+                                            // console.log(err.response.data);
+                                            axios({
+                                                method: 'PUT',
+                                                headers: { "Content-Type": "application/json" },
+                                                url: 'http://178.128.101.229:5984/media/'+obj.hash,
+                                                data: obj
+                                            })
+                                            .then(function (res) {
+                                                // console.log(res.response.data);
+                                            })
+                                            .catch(function (err) {
+                                                console.log(err.response.data);
+                                            });
                                         });
                                         to.next(data)
                                     }
