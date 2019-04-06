@@ -52,7 +52,7 @@ Gun.on('opt', function(ctx){
             // const id = Object.keys(put)
             // put[id[0]]['_']['>']['id'] = put[id[0]]['_']['>'][pub]
             // put[id[0]]['id'] = 'id_'+new Date().getTime()
-            console.log(pub_val)
+            console.log(pub)
             if (pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)
