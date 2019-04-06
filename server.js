@@ -4,6 +4,7 @@ const express = require('express')
 const helmet = require('helmet')
 const SEA = Gun.SEA
 const app = express()
+const axios = require('axios')
 
 app.use(helmet())
 app.use(Gun.serve)
@@ -65,6 +66,19 @@ Gun.on('opt', function(ctx){
                                 try {
                                     const id = JSON.parse(pub_val)
                                     if (res !== undefined && post.length <= 10000 && id.hash) {
+                                        // index data on couchdb
+                                        axios({
+                                            method: 'POST',
+                                            headers: { Content-Type: "application/json" },
+                                            url: 'http://178.128.101.229:5984/media/'+obj.hash,
+                                            data: obj
+                                        })
+                                        .then(function (response) {
+                                            console.log(response);
+                                        })
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        });
                                         to.next(data)
                                     }
                                 } catch (error) {
