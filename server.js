@@ -72,7 +72,7 @@ Gun.on('opt', function(ctx){
                                             // console.log(res.response.data);
                                         })
                                         .catch(function (err) {
-                                            // console.log(err.response.data);
+                                            console.log(err.response.data);
                                             axios({
                                                 method: 'PUT',
                                                 headers: { "Content-Type": "application/json" },
