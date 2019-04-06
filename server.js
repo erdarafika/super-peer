@@ -56,7 +56,7 @@ Gun.on('opt', function(ctx){
                 try {
                     const obj = JSON.parse(pub_val)
                     console.log(obj)
-                    if (obj.type && obj.hash && obj.message && obj.s && obj.timestamp) {
+                    if (obj) {
                         if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
