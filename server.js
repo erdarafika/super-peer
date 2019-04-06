@@ -55,9 +55,7 @@ Gun.on('opt', function(ctx){
                         if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
-                            console.log(JSON.stringify({m: {message: obj.message}, s: obj.sig}))
-                            const sig = 'SEA{"m":{"message":"'+ obj.message +'"},"s":"'+ obj.sig +'"}'
-                            console.log(sig)
+                            const sig = "SEA"+JSON.stringify({m: {message: obj.message}, s: obj.sig})
                             verify_sig(sig, pubkey).then( res => {
                                 const post = res.message
                                 try {
