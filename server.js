@@ -63,29 +63,6 @@ Gun.on('opt', function(ctx){
                                     if (res !== undefined && post.length <= 10000 && id.hash) {
                                         obj.idx = pub
                                         obj.type = topic
-                                        axios({
-                                            method: 'GET',
-                                            headers: { "Content-Type": "application/json" },
-                                            url: 'http://178.128.101.229:5984/media/'+obj.hash
-                                        })
-                                        .then(function (res) {
-                                            console.log(res.response.data);
-                                        })
-                                        .catch(function (err) {
-                                            console.log(err.response.data);
-                                            axios({
-                                                method: 'PUT',
-                                                headers: { "Content-Type": "application/json" },
-                                                url: 'http://178.128.101.229:5984/media/'+obj.hash,
-                                                data: obj
-                                            })
-                                            .then(function (res) {
-                                                // console.log(res.response.data);
-                                            })
-                                            .catch(function (err) {
-                                                // console.log(err.response.data);
-                                            });
-                                        });
                                         to.next(data)
                                     }
                                 } catch (error) {
