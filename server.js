@@ -47,12 +47,7 @@ Gun.on('opt', function(ctx){
             const spath = path.split('.')
             const topic = spath[0]
             const topics = ["sea", "public", "posts", "replies", "to"]
-            const filter = topics.includes(topic)
-
-            // const id = Object.keys(put)
-            // put[id[0]]['_']['>']['id'] = put[id[0]]['_']['>'][pub]
-            // put[id[0]]['id'] = 'id_'+new Date().getTime()
-            // console.log(pub)
+            const filter = topics.includes(topic) 
             if (pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)
@@ -133,7 +128,6 @@ Gun.on('opt', function(ctx){
                 }        
             }
         } else if (get) {
-            console.log(data)
             to.next(data)
         }
         
