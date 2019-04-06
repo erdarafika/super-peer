@@ -68,16 +68,16 @@ Gun.on('opt', function(ctx){
                                     if (res !== undefined && post.length <= 10000 && id.hash) {
                                         // index data on couchdb
                                         axios({
-                                            method: 'POST',
+                                            method: 'PUT',
                                             headers: { "Content-Type": "application/json" },
                                             url: 'http://178.128.101.229:5984/media/'+obj.hash,
                                             data: obj
                                         })
                                         .then(function (response) {
-                                            console.log(response);
+                                            // console.log(response);
                                         })
                                         .catch(function (error) {
-                                            console.log(error);
+                                            // console.log(error);
                                         });
                                         to.next(data)
                                     }
@@ -125,7 +125,6 @@ Gun.on('opt', function(ctx){
                                 } else {
                                     try {
                                         const obj = JSON.parse(pub_val)
-                                        console.log(obj)
                                         if (obj.data) {
                                             verify_sig(obj.data, exist_obj.pub).then( res_sig => { 
                                                 if (res_sig) {
