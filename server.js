@@ -55,7 +55,7 @@ Gun.on('opt', function(ctx){
                         if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
-                            console.log(pub.val)
+                            console.log(pub_val)
                             const sig = 'SEA{"m":{"message":"'+ obj.message +'"},"s":"'+ obj.sig +'"}'
                             console.log(sig)
                             verify_sig(sig, pubkey).then( res => {
