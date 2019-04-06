@@ -55,11 +55,14 @@ Gun.on('opt', function(ctx){
             if (pubkey && typeof(pub_val) == 'string' && filter == true) {
                 try {
                     const obj = JSON.parse(pub_val)
-                    if (obj.signed) {
+                    console.log(obj)
+                    if (obj.type && obj.hash && obj.message && obj.s && obj.timestamp) {
                         if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
-                            verify_sig(obj.signed, pubkey).then( res => {
+                            const sig = 'SEA{"m":{"message":"'+ obj.message +'"},"s":"'+ obj.sig +'"}'
+                            console.log(sig)
+                            verify_sig(sig, pubkey).then( res => {
                                 const post = res.message
                                 try {
                                     const id = JSON.parse(pub_val)
