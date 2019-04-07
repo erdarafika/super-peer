@@ -63,7 +63,7 @@ Gun.on('opt', function(ctx){
                                     if (res !== undefined && post.length <= 10000 && id.hash) {
                                         // index data on couchdb
                                         axios({
-                                            method: 'POST',
+                                            method: 'PUT',
                                             headers: { "Content-Type": "application/json" },
                                             url: 'http://178.128.101.229:5984/media/'+obj.hash,
                                             data: obj
