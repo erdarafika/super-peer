@@ -4,7 +4,6 @@ const express = require('express')
 const helmet = require('helmet')
 const SEA = Gun.SEA
 const app = express()
-const axios = require('axios')
 
 app.use(helmet())
 app.use(Gun.serve)
