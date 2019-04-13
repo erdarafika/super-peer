@@ -120,5 +120,5 @@ Gun.on('opt', function(ctx){
     })
 })
 
-Gun({localStorage: false, radisk: false, web: server})
+Gun({localStorage: false, radisk: true, web: server})
 console.log('Server is running on port 3000')
