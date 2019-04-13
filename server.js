@@ -54,12 +54,12 @@ Gun.on('opt', function(ctx){
                         if (pubkey == 'undefined' || pubkey.length < 87) {
                             
                         } else {
-                            const sig = "SEA"+JSON.stringify({m: {message: obj.message}, s: obj.sig})
+                            const sig = "SEA"+JSON.stringify({m: {message: obj.message, type: obj.type}, s: obj.sig})
                             verify_sig(sig, pubkey).then( res => {
                                 const post = res.message
                                 try {
                                     const id = JSON.parse(pub_val)
-                                    if (res !== undefined && post.length <= 10000 && id.hash) {
+                                    if (res !== undefined && id.hash) {
                                         obj.idx = pub
                                         obj.type = topic
                                         to.next(data)
