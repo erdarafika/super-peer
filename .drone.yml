@@ -1,7 +1,6 @@
 kind: pipeline
-name: super-peer
 steps:
- - name: build
- image: node:latest
- commands:
- - npm install
+- name: super-peer
+  image: node
+  commands:
+  - npm install
