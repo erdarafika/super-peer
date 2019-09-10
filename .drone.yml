@@ -1,6 +1,6 @@
 kind: pipeline
 steps:
-- name: peer
+- name: super-peer
   image: node
   commands:
   - npm install
