@@ -7,7 +7,7 @@ server:
   host:
     from_secret: proxy-host
   user:
-    from_secret: proxy-user
+    from_secret: user
   ssh_key:
     from_secret: nabilah
   
