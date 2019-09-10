@@ -7,7 +7,7 @@ steps:
 - name: super-peer
   image: node
   commands:
-  - npm install
+  - docker ps
 
 trigger:
   branch:
