@@ -1,17 +1,13 @@
 ---
 kind: pipeline
-type: ssh
-name: ccc-ssh
-
-server:
-  host: 3.1.6.60
-  user: ubuntu
+type: docker
+name: ccc
   
 steps:
 - name: super-peer
   image: node
   commands:
-  - docker ps
+  - node --version
 
 trigger:
   branch:
