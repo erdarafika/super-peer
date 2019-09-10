@@ -1,14 +1,22 @@
 ---
 kind: pipeline
-type: docker
-name: ccc
+type: ssh
+name: ccc-ssh
+
+server:
+  host:
+    from_secret: proxy-host
+  user:
+    from_secret: proxy-user
+  password:
+    from_secret: proxy-pass
   
 steps:
 - name: super-peer
   image: node
   commands:
   - node --version
-  - npm i helmet
+  - docker ps
 
 trigger:
   branch:
