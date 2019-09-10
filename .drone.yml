@@ -1,10 +1,7 @@
-name: arrayslab
-
 kind: pipeline
-type: docker
-
+name: super-peer
 steps:
-- name: test
-  image: node
-  commands:
-  - npm install
+ - name: build
+ image: node:latest
+ commands:
+ - npm install
