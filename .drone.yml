@@ -5,9 +5,9 @@ name: ccc
   
 steps:
 - name: super-peer
-  image: node
+  image: quay.io/testcontainers/dind-drone-plugin
   commands:
-  - node --version
+  - docker ps
 
 trigger:
   branch:
