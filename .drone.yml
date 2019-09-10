@@ -8,8 +8,8 @@ server:
     from_secret: proxy-host
   user:
     from_secret: proxy-user
-  password:
-    from_secret: proxy-pass
+  ssh_key:
+    from_secret: nabilah
   
 steps:
 - name: super-peer
