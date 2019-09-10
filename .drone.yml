@@ -8,3 +8,7 @@ steps:
   image: node
   commands:
   - npm install
+
+trigger:
+  branch:
+  - master
