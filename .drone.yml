@@ -1,27 +1,37 @@
 ---
 kind: pipeline
-type: ssh
-name: ccc-ssh
-
-server:
-  host:
-    from_secret: host
-  user:
-    from_secret: username
-  ssh_key:
-    from_secret: ssh_key
-  
-platform:
-  os: linux
-  arch: amd64
+type: docker
+name: ccc
 
 steps:
-- name: super-peer
-  image: node
-  commands:
-  - node --version
-  - docker ps
+  # Step 1. Build the image (using host cache)
+  - name: docker
+    image: docker:17
+    volumes:
+    - name: docker-socket
+      path: /var/run/docker.sock
+    commands:
+      - docker ps
 
-trigger:
-  branch:
-  - master
+# server:
+#   host:
+#     from_secret: host
+#   user:
+#     from_secret: username
+#   ssh_key:
+#     from_secret: ssh_key
+  
+# platform:
+#   os: linux
+#   arch: amd64
+
+# steps:
+# - name: super-peer
+#   image: node
+#   commands:
+#   - node --version
+#   - docker ps
+
+# trigger:
+#   branch:
+#   - master
