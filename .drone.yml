@@ -1,18 +1,17 @@
 ---
 kind: pipeline
-type: docker
-name: ccc
+type: exec
+name: default
+
+platform:
+  os: linux
+  arch: amd64
 
 steps:
-  # Step 1. Build the image (using host cache)
-  - name: docker
-    image: docker:17
-    volumes:
-    - name: docker-socket
-      path: /var/run/docker.sock
-    commands:
-      - docker ps
-
+- name: greeting
+  commands:
+  - echo hello world
+  
 # server:
 #   host:
 #     from_secret: host
