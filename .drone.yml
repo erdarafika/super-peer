@@ -4,43 +4,11 @@ type: docker
 name: ccc
 
 steps:
-  - name: hello
-    image: alpine
+  # Step 1. Build the image (using host cache)
+  - name: docker
+    image: docker:17
+    volumes:
+    - name: docker-socket
+      path: /var/run/docker.sock
     commands:
-      - echo Hello World!
-
-# pipeline:
-#   ssh:
-#     image: appleboy/drone-ssh
-#     settings:
-#       host: 3.1.6.60
-#       username: ubuntu
-#       key:
-#         from_secret: nabilah
-#       port: 22
-#       script:
-#         - echo hello
-#         - echo world
-
-# server:
-#   host:
-#     from_secret: proxy-host
-#   user:
-#     from_secret: user
-#   ssh_key:
-#     from_secret: nabilah
-  
-# platform:
-#   os: linux
-#   arch: amd64
-
-# steps:
-# - name: super-peer
-#   image: node
-#   commands:
-#   - node --version
-#   - docker ps
-
-# trigger:
-#   branch:
-#   - master
+      - docker ps
