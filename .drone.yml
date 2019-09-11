@@ -1,7 +1,7 @@
 ---
 kind: pipeline
-type: docker
-name: ccc
+# type: docker
+name: default
 
 steps:
   # Step 1. Build the image (using host cache)
