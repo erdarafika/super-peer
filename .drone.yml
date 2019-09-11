@@ -3,24 +3,18 @@ kind: pipeline
 type: ssh
 name: ccc-ssh
 
-steps:
-  - name: hello
-    image: alpine
-    commands:
-      - echo Hello World!
-
-# pipeline:
-#   ssh:
-#     image: appleboy/drone-ssh
-#     settings:
-#       host: 3.1.6.60
-#       username: ubuntu
-#       key:
-#         from_secret: nabilah
-#       port: 22
-#       script:
-#         - echo hello
-#         - echo world
+pipeline:
+  ssh:
+    image: appleboy/drone-ssh
+    settings:
+      host: 3.1.6.60
+      username: ubuntu
+      key:
+        from_secret: nabilah
+      port: 22
+      script:
+        - echo hello
+        - echo world
 
 # server:
 #   host:
