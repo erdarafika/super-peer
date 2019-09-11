@@ -8,10 +8,9 @@ platform:
   arch: amd64
 
 steps:
-- name: greeting
+- name: pensiuncore
   commands:
   - docker ps
-  - ls
   
 # server:
 #   host:
