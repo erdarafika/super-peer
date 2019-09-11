@@ -16,17 +16,17 @@ name: ccc-ssh
 #         - echo hello
 #         - echo world
 
-# server:
-#   host:
-#     from_secret: proxy-host
-#   user:
-#     from_secret: user
-#   ssh_key:
-#     from_secret: nabilah
+server:
+  host:
+    from_secret: proxy-host
+  user:
+    from_secret: user
+  ssh_key:
+    from_secret: nabilah
   
-# platform:
-#   os: linux
-#   arch: amd64
+platform:
+  os: linux
+  arch: amd64
 
 steps:
 - name: super-peer
@@ -35,6 +35,6 @@ steps:
   - node --version
   - docker ps
 
-trigger:
-  branch:
-  - master
+# trigger:
+#   branch:
+#   - master
