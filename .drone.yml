@@ -5,11 +5,11 @@ name: ccc-ssh
 
 server:
   host:
-    from_secret: proxy-host
+    from_secret: host
   user:
-    from_secret: user
+    from_secret: username
   ssh_key:
-    from_secret: nabilah
+    from_secret: ssh_key
   
 platform:
   os: linux
