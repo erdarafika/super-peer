@@ -3,18 +3,18 @@ kind: pipeline
 type: ssh
 name: ccc-ssh
 
-pipeline:
-  ssh:
-    image: appleboy/drone-ssh
-    settings:
-      host: 3.1.6.60
-      username: ubuntu
-      key:
-        from_secret: nabilah
-      port: 22
-      script:
-        - echo hello
-        - echo world
+# pipeline:
+#   ssh:
+#     image: appleboy/drone-ssh
+#     settings:
+#       host: 3.1.6.60
+#       username: ubuntu
+#       key:
+#         from_secret: nabilah
+#       port: 22
+#       script:
+#         - echo hello
+#         - echo world
 
 # server:
 #   host:
@@ -28,13 +28,13 @@ pipeline:
 #   os: linux
 #   arch: amd64
 
-# steps:
-# - name: super-peer
-#   image: node
-#   commands:
-#   - node --version
-#   - docker ps
+steps:
+- name: super-peer
+  image: node
+  commands:
+  - node --version
+  - docker ps
 
-# trigger:
-#   branch:
-#   - master
+trigger:
+  branch:
+  - master
