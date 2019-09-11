@@ -11,6 +11,10 @@ server:
   ssh_key:
     from_secret: nabilah
   
+platform:
+  os: linux
+  arch: amd64
+
 steps:
 - name: super-peer
   image: node
