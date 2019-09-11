@@ -11,6 +11,7 @@ steps:
 - name: greeting
   commands:
   - docker ps
+  - ls
   
 # server:
 #   host:
